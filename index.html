@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Marks </title>
+</head>
+
+<body>
+
+    <h2>Student Marks Analyzer</h2>
+
+    <p>Enter student details </p>
+
+    <script>
+
+        
+
+        let studentName = prompt("Enter student name:");
+
+        let studentRoll = Number(prompt("Enter roll number:"));
+
+        let studentDept = prompt("Enter department:");
+
+        console.log("Student Name:", studentName.toUpperCase());
+
+        console.log("Roll Number:", studentRoll);
+
+        console.log("Department:", studentDept);
+
+        console.log("Name Length:", studentName.length);
+
+
+
+
+        let subjectMarks = [];
+
+        for (let i = 1; i <= 5; i++) {
+
+            let score;
+
+            do {
+
+                score = Number(
+                    prompt("Enter subject mark " + i + " (0-100):")
+                );
+
+                if (score < 0 || score > 100) {
+
+                    alert("Please enter marks between 0 and 100.");
+
+                }
+
+            } while (score < 0 || score > 100);
+
+            subjectMarks.push(score);
+
+        }
+
+        console.log("Student Marks:", subjectMarks);
+
+
+        // Function to calculate total marks
+
+        function getTotalMarks(subjectMarks) {
+
+            let sum = 0;
+
+            for (let i = 0; i < subjectMarks.length; i++) {
+
+                sum = sum + subjectMarks[i];
+
+            }
+
+            return sum;
+        }
+
+        console.log("Total Marks:", getTotalMarks(subjectMarks));
+
+
+        // Function to calculate percentage
+
+        function getAverageMarks(subjectMarks) {
+
+            let total = getTotalMarks(subjectMarks);
+
+            let average = total / subjectMarks.length;
+
+            return average;
+        }
+
+        console.log("Percentage:", getAverageMarks(subjectMarks) + "%");
+
+
+        // Function to find maximum marks
+
+        function getMaximumMarks(subjectMarks) {
+
+            let maxMarks = subjectMarks[0];
+
+            for (let i = 1; i < subjectMarks.length; i++) {
+
+                if (subjectMarks[i] > maxMarks) {
+
+                    maxMarks = subjectMarks[i];
+
+                }
+
+            }
+
+            return maxMarks;
+        }
+
+        console.log("Highest Marks:", getMaximumMarks(subjectMarks));
+
+
+        // Function to find minimum marks
+
+        function getMinimumMarks(subjectMarks) {
+
+            let minMarks = subjectMarks[0];
+
+            for (let i = 1; i < subjectMarks.length; i++) {
+
+                if (subjectMarks[i] < minMarks) {
+
+                    minMarks = subjectMarks[i];
+
+                }
+
+            }
+
+            return minMarks;
+        }
+
+        console.log("Lowest Marks:", getMinimumMarks(subjectMarks));
+
+
+        // Function to count passed subjects
+
+        function getPassedSubjects(subjectMarks) {
+
+            let passCount = 0;
+
+            for (let i = 0; i < subjectMarks.length; i++) {
+
+                if (subjectMarks[i] >= 40) {
+
+                    passCount++;
+
+                }
+
+            }
+
+            return passCount;
+        }
+
+        console.log("Subjects Passed:", getPassedSubjects(subjectMarks));
+
+
+        // Function to check overall performance
+
+        function checkResult(subjectMarks) {
+
+            let percentage = getAverageMarks(subjectMarks);
+
+            if (percentage >= 80) {
+
+                return "Excellent";
+
+            }
+
+            else if (percentage >= 60) {
+
+                return "Good";
+
+            }
+
+            else if (percentage >= 40) {
+
+                return "Average";
+
+            }
+
+            else {
+
+                return "Needs Improvement";
+
+            }
+
+        }
+
+        console.log("Performance:", checkResult(subjectMarks));
+
+
+    </script>
+
+</body>
+
+</html>
